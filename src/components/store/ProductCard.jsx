@@ -1,0 +1,58 @@
+import ProductStars from "./ProductStars";
+import classes from "./Store.module.css";
+import { useState } from "react";
+
+export default function ProductCard({ item, setCartItems }) {
+  const [quantity, setQuantity] = useState(0);
+
+  //perfomanter die function zu übergeben anstelle für alle Cards neu zu definieren??
+  const changeQuantity = (e) => {
+    setQuantity((prevQuantity) => {
+      const newQuantity = prevQuantity + parseInt(e.target.value);
+      return newQuantity > 0 ? newQuantity : 0;
+    });
+  };
+
+  const inputQuantity = (e) => {
+    const value = e.target.value.trim();
+    return !isNaN(value) ? setQuantity(parseInt(value)) : "";
+  };
+
+  const addToCart = () => {
+    setCartItems((prevCartItems) => {
+      if (quantity <= 0) {
+        console.log("No items to be added");
+        return prevCartItems;
+      }
+      return [...prevCartItems, { ...item, quantity }];
+    });
+  };
+  return (
+    <div className={classes.card}>
+      <img src={item.image}></img>
+      <h4>{item.title}</h4>
+      <div className={classes.properties}>
+        <div>
+          <ProductStars rating={item.rating.rate} count={item.rating.count} />
+        </div>
+      </div>
+      <p>{item.price}€</p>
+
+      <div>
+        <button onClick={changeQuantity} value="-1">
+          -
+        </button>
+        <input
+          type="number"
+          value={quantity}
+          onChange={inputQuantity}
+          min="0"
+        />
+        <button onClick={changeQuantity} value="1">
+          +
+        </button>
+      </div>
+      <button onClick={addToCart}>Add to Cart</button>
+    </div>
+  );
+}

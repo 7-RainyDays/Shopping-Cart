@@ -1,0 +1,27 @@
+.productGrid {
+    min-height: 800px;
+    max-width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row: 1fr 1fr;
+    gap: 2rem;
+    padding: 1em;
+}
+
+.card {
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+    padding: 1em;
+}
+
+.card>img {
+    max-height: 220px;
+    object-fit: contain;
+}
+
+.properties {
+    text-align: center;
+}

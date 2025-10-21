@@ -1,0 +1,11 @@
+.sliderContainer {
+    width: 80%;
+    margin: 0 auto;
+    min-height: 400px;
+}
+
+.sliderContainer img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
