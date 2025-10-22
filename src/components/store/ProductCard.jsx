@@ -36,7 +36,7 @@ export default function ProductCard({ item, setCartItems }) {
           <ProductStars rating={item.rating.rate} count={item.rating.count} />
         </div>
       </div>
-      <p>{item.price}€</p>
+      <p>{item.price.toFixed(2)}€</p>
 
       <div>
         <button onClick={changeQuantity} value="-1">
