@@ -1,6 +1,5 @@
 import Navbar from "../Navbar/Navbar";
 import classes from "./Checkout.module.css";
-import { useState } from "react";
 
 export default function Checkout({ cartItems, setCartItems }) {
   const total = cartItems.reduce(
@@ -28,9 +27,9 @@ export default function Checkout({ cartItems, setCartItems }) {
             {cartItems?.map((item) => (
               <tr key={item.id}>
                 <td>{item.title}</td>
-                <td>{item.price.toFixed(2)}</td>
+                <td>{item.price.toFixed(2)} €</td>
                 <td>{item.quantity}</td>
-                <td>{item.quantity * item.price}</td>
+                <td>{item.quantity * item.price} €</td>
                 <td>
                   <button onClick={() => deleteItem(item.id)}>x</button>
                 </td>

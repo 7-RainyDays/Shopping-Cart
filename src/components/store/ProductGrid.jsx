@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import classes from "./Store.module.css";
 
-export default function ProductGrid({ setCartItems }) {
+export default function ProductGrid({ cartItems, setCartItems }) {
   const [shopItems, setShopItems] = useState([]);
 
   const url = "https://fakestoreapi.com/products";
@@ -20,7 +20,12 @@ export default function ProductGrid({ setCartItems }) {
     <div className={classes.productGrid}>
       {shopItems.map((item) => {
         return (
-          <ProductCard key={item.id} item={item} setCartItems={setCartItems} />
+          <ProductCard
+            key={item.id}
+            item={item}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+          />
         );
       })}
     </div>

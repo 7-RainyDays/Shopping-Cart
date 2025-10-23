@@ -6,7 +6,7 @@ export default function Store({ cartItems, setCartItems }) {
     <>
       <Navbar cartItems={cartItems} />
       <p>This is the store page</p>
-      <ProductGrid setCartItems={setCartItems} />
+      <ProductGrid cartItems={cartItems} setCartItems={setCartItems} />
     </>
   );
 }

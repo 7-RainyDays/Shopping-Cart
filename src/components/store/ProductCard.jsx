@@ -2,7 +2,7 @@ import ProductStars from "./ProductStars";
 import classes from "./Store.module.css";
 import { useState } from "react";
 
-export default function ProductCard({ item, setCartItems }) {
+export default function ProductCard({ item, cartItems, setCartItems }) {
   const [quantity, setQuantity] = useState(0);
 
   //perfomanter die function zu übergeben anstelle für alle Cards neu zu definieren??
@@ -24,7 +24,16 @@ export default function ProductCard({ item, setCartItems }) {
         console.log("No items to be added");
         return prevCartItems;
       }
-      return [...prevCartItems, { ...item, quantity }];
+
+      const existingItem = prevCartItems.find((x) => x.id === item.id);
+
+      if (existingItem) {
+        return prevCartItems.map((x) =>
+          x.id === item.id ? { ...x, quantity: x.quantity + quantity } : x
+        );
+      } else {
+        return [...prevCartItems, { ...item, quantity }];
+      }
     });
   };
   return (
@@ -36,7 +45,7 @@ export default function ProductCard({ item, setCartItems }) {
           <ProductStars rating={item.rating.rate} count={item.rating.count} />
         </div>
       </div>
-      <p>{item.price.toFixed(2)}€</p>
+      <p>{item.price.toFixed(2)} €</p>
 
       <div>
         <button onClick={changeQuantity} value="-1">
