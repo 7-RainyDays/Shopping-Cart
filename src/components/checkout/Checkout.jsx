@@ -29,7 +29,7 @@ export default function Checkout({ cartItems, setCartItems }) {
                 <td>{item.title}</td>
                 <td>{item.price.toFixed(2)} €</td>
                 <td>{item.quantity}</td>
-                <td>{item.quantity * item.price} €</td>
+                <td>{(item.quantity * item.price).toFixed(2)} €</td>
                 <td>
                   <button onClick={() => deleteItem(item.id)}>x</button>
                 </td>
