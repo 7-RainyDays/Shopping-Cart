@@ -10,6 +10,19 @@ export default function Checkout({ cartItems, setCartItems }) {
   const deleteItem = (id) =>
     setCartItems((prev) => prev.filter((item) => item.id !== id));
 
+  const changeQuantity = (num, id) => {
+    setCartItems((prev) => {
+      const targetItem = prev.find((item) => item.id === id);
+      if (!targetItem) return prev;
+      if (targetItem.quantity === 1 && num === -1) {
+        return prev.filter((item) => item.id !== id);
+      }
+      return prev.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + num } : item
+      );
+    });
+  };
+
   return (
     <>
       <Navbar />
@@ -30,6 +43,14 @@ export default function Checkout({ cartItems, setCartItems }) {
                 <td>{item.price.toFixed(2)} €</td>
                 <td>{item.quantity}</td>
                 <td>{(item.quantity * item.price).toFixed(2)} €</td>
+                <td>
+                  {" "}
+                  <button onClick={() => changeQuantity(-1, item.id)}>-</button>
+                </td>
+                <td>
+                  {" "}
+                  <button onClick={() => changeQuantity(1, item.id)}>+</button>
+                </td>
                 <td>
                   <button onClick={() => deleteItem(item.id)}>x</button>
                 </td>
