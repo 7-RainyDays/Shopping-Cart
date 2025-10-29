@@ -2,7 +2,7 @@ import ProductStars from "./ProductStars";
 import classes from "./Store.module.css";
 import { useState } from "react";
 
-export default function ProductCard({ item, cartItems, setCartItems }) {
+export default function ProductCard({ item, setCartItems }) {
   const [quantity, setQuantity] = useState(0);
 
   const changeQuantity = (e) => {
