@@ -5,7 +5,6 @@ import { useState } from "react";
 export default function ProductCard({ item, cartItems, setCartItems }) {
   const [quantity, setQuantity] = useState(0);
 
-  //perfomanter die function zu übergeben anstelle für alle Cards neu zu definieren??
   const changeQuantity = (e) => {
     setQuantity((prevQuantity) => {
       const newQuantity = prevQuantity + parseInt(e.target.value);

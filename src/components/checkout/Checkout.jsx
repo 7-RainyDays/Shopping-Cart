@@ -25,7 +25,7 @@ export default function Checkout({ cartItems, setCartItems }) {
 
   return (
     <>
-      <Navbar />
+      <Navbar cartItems={cartItems} />
       <div className={classes.checkoutTable}>
         <h2>Checkout</h2>
         <table>

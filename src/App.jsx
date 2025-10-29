@@ -12,7 +12,7 @@ export default function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Homepage cartItems={cartItems} setCartItems={setCartItems} />,
+      element: <Homepage cartItems={cartItems} />,
       errorElement: <ErrorPage />,
     },
     {

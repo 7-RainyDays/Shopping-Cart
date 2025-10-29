@@ -1,10 +1,10 @@
 import Navbar from "../Navbar/Navbar";
 import SimpleSlider from "../showcase/Showcase";
 
-export default function Homepage() {
+export default function Homepage({ cartItems }) {
   return (
     <main>
-      <Navbar />
+      <Navbar cartItems={cartItems} />
       <h1>Modern Fashion Store</h1>
       <SimpleSlider />
       <div>
